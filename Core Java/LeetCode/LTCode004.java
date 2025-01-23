@@ -1,10 +1,18 @@
 package LeetCode;
 
 class LTCode004 {
+    static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         ListNode current = dummy;
         int carry = 0;
+
         while (l1 != null || l2 != null || carry != 0) {
             int sum = carry;
             if (l1 != null) {
@@ -24,40 +32,19 @@ class LTCode004 {
 
     public static void main(String[] args) {
         LTCode004 solution = new LTCode004();
-        ListNode l1 = new ListNode(1, new ListNode(9, new ListNode(8)));
-        ListNode l2 = new ListNode(2, new ListNode(7, new ListNode(6)));
+        ListNode l1 = new ListNode(2, new ListNode(4, new ListNode(3)));
+        ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
+        
         ListNode result = solution.addTwoNumbers(l1, l2);
-        printList(result);
-        l1 = new ListNode(0);
-        l2 = new ListNode(1, new ListNode(2));
-        result = solution.addTwoNumbers(l1, l2);
-        printList(result);
-        l1 = new ListNode(4, new ListNode(9));
-        l2 = new ListNode(6, new ListNode(5, new ListNode(8)));
-        result = solution.addTwoNumbers(l1, l2);
-        printList(result);
-        l1 = new ListNode(9, new ListNode(9));
-        l2 = new ListNode(1);
-        result = solution.addTwoNumbers(l1, l2);
         printList(result);
     }
 
-    public static void printList(ListNode head) {
-        while (head != null) {
-            System.out.print(head.val + " ");
-            head = head.next;
+    public static void printList(ListNode node) {
+        while (node != null) {
+            System.out.print(node.val);
+            if (node.next != null) System.out.print(" -> ");
+            node = node.next;
         }
         System.out.println();
     }
 }
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
-
-    
-
